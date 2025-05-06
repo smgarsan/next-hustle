@@ -1,6 +1,7 @@
 import ProductCard from "./product-card";
+import { Product } from "@/types";
 
-export default function ProductList({ title, data, limit }: { title?: string, data: any, limit?: number}) {
+export default function ProductList({ title, data, limit }: { title?: string, data: Product[], limit?: number }) {
     const limitedData = limit ? data.slice(0, limit) : data;
 
     return (
@@ -12,7 +13,7 @@ export default function ProductList({ title, data, limit }: { title?: string, da
                 data.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {
-                            limitedData.map((product: any) => (
+                            limitedData.map((product: Product) => (
                                 <ProductCard key={product.slug} product={product} />
                             ))
                         }
